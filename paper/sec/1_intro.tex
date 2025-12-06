@@ -1,0 +1,142 @@
+\section{Abstract}
+Facial Emotion Recognition (FER) aims to classify human affective states from facial expressions using computer vision and deep learning. This project develops a ResNet18-based FER pipeline trained on the FER2013 dataset and deployed in a real-time webcam system. FER2013’s low-resolution grayscale images make the task challenging, especially for subtle and visually overlapping emotions such as \textit{fear}, \textit{sad}, and \textit{angry}. To address these difficulties, the project incorporates preprocessing, augmentation, fine-tuning, ablation studies, and a full deployment pipeline using OpenCV. Experiments show that the model provides competitive accuracy while maintaining real-time inference speed on a MacBook M1. The final system demonstrates how to translate deep-learning methodology into a practical interactive application.  
+
+\section{Introduction}
+FER is an established task in computer vision with applications in assistive technology, affective computing, education platforms, safety monitoring, and interactive entertainment. Despite advances in deep learning, FER remains challenging due to occlusions, identity differences, pose variation, cultural diversity in expression, and subtle differences between certain emotion classes. Low-resolution datasets such as FER2013 intensify these difficulties.
+
+This project builds a complete FER system focusing on efficient architectures suitable for real-time settings. It investigates the performance trade-offs of a compact ResNet18 backbone, explores augmentation strategies for noisy data, examines common misclassification patterns, and deploys a functional, responsive webcam system. The emphasis is not only on model accuracy but also on use-case practicality and interpretability.  
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item High-level system pipeline diagram.
+    \item Example FER2013 images illustrating difficulty and variability.
+\end{itemize}
+
+\section{Related Work}
+Traditional FER solutions employed handcrafted descriptors such as Gabor filters, HOG, or LBP combined with SVM-based classification. These methods struggled with illumination changes and intra-class variability. The transition to deep learning improved robustness due to end-to-end feature learning. CNN-based models such as VGG, Inception, and ResNet became standard. Variants incorporating attention modules, multi-branch fusion, spatial transformers, and facial landmark guidance have improved fine-grained emotion discrimination.
+
+Recent work explores transformer architectures, temporal modeling via LSTMs or 3D CNNs, and cross-domain generalization through large-scale datasets like AffectNet and RAF-DB. However, many high-performing systems rely on heavy architectures unsuitable for real-time inference on consumer hardware. This project focuses on the practical end of the spectrum, emphasizing efficient inference while retaining strong performance.
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Comparison of FER pipelines: handcrafted vs. CNN-based.
+    \item Diagram highlighting typical FER challenges (pose, lighting, occlusion).
+\end{itemize}
+
+\section{Data}
+FER2013 provides 35k labeled images of size $48\times 48$, each assigned to one of seven emotion categories. Images are grayscale, low-resolution, and captured “in the wild,” making the dataset representative but difficult. The training set is imbalanced, with \textit{disgust} significantly underrepresented, affecting stability during training.
+
+Preprocessing includes:
+\begin{itemize}
+    \item Normalization to zero mean and unit variance.
+    \item Data augmentation: horizontal flips, small rotations, random crops.
+    \item Optional resizing to $224\times224$ when using pretrained CNN backbones.
+\end{itemize}
+
+The augmentation is crucial for FER2013 because many images contain noise, poor cropping, or ambiguous expressions.  
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Class distribution histogram.
+    \item Visualization grid of augmented samples.
+    \item Examples of noisy/ambiguous labels.
+\end{itemize}
+
+\section{Methods}
+\subsection{Model Architecture}
+The project uses ResNet18, pretrained on ImageNet. Only the final fully connected layer is modified for seven output classes. This architecture balances depth, feature richness, and speed. Earlier layers capture edges and textures, while deeper layers specialize in higher-level emotional cues. Fine-tuning allows the model to adapt to facial-expression patterns despite the low resolution of FER2013.
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Architecture diagram showing residual blocks.
+    \item Comparison table of ResNet18 vs. MobileNet, VGG, EfficientNet in FLOPs/params.
+\end{itemize}
+
+\subsection{Training Protocol}
+The model is trained for 10 epochs using:
+\begin{itemize}
+    \item Adam optimizer (lr $= 0.001$)
+    \item Weight decay $= 1\times 10^{-4}$
+    \item Batch size 32
+    \item MPS acceleration on MacBook M1
+\end{itemize}
+
+A ReduceLROnPlateau scheduler decreases the learning rate when validation accuracy stagnates. Augmentation reduces overfitting and helps the model generalize to real webcam inputs.
+
+\subsection{Evaluation Metrics}
+Evaluation uses accuracy, macro-F1, weighted-F1, and confusion matrices. Macro metrics are emphasized due to class imbalance. Qualitative analyses examine common misclassifications and model attention through heatmaps.
+
+\subsection{Deployment Pipeline}
+The live system uses OpenCV:
+\begin{enumerate}
+    \item Capture frames from webcam.
+    \item Use Haar Cascade to detect face bounding boxes.
+    \item Crop, resize, normalize, and feed to the ResNet18 model.
+    \item Display predicted emotion on-screen.
+\end{enumerate}
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Screenshot of real-time predictions.
+    \item Visualization of face detection and preprocessing crops.
+\end{itemize}
+
+\section{Experiments}
+\subsection{Quantitative Performance}
+Initial training yields:
+\begin{itemize}
+    \item Training accuracy: 78\%
+    \item Test accuracy: 68.3\%
+\end{itemize}
+
+The confusion matrix shows strong performance on \textit{happy} and \textit{surprise}, while \textit{fear}, \textit{sad}, and \textit{angry} often overlap. The \textit{disgust} class suffers due to small sample size.
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Large annotated confusion matrix.
+    \item Precision/recall/F1 bar plots per class.
+\end{itemize}
+
+\subsection{Ablation Studies}
+Three ablations were performed:
+
+\textbf{(1) With vs. without augmentation:}  
+Removing augmentation reduces test accuracy by 3–4%.
+
+\textbf{(2) Haar Cascade vs. DNN face detector:}  
+The DNN detector improves cropping quality but reduces real-time FPS. Haar Cascade remains optimal for interactive use.
+
+\textbf{(3) Input resolution:}  
+Feeding $224\times224$ resized images improves accuracy slightly but slows down inference.  
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Accuracy curves comparing augmented vs. non-augmented training.
+    \item Side-by-side face detection examples for Haar vs. DNN.
+\end{itemize}
+
+\subsection{Failure Case Analysis}
+Misclassifications often arise from:
+\begin{itemize}
+    \item Occlusions (hands, hair, masks)
+    \item Side-profile faces
+    \item Dim lighting
+    \item Ambiguous expressions
+\end{itemize}
+
+Grad-CAM reveals that the model often fixates on the mouth region, which may explain confusion between similar classes when mouth shape lacks detail.
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Misclassified examples with predicted vs. true labels.
+    \item Grad-CAM heatmaps.
+\end{itemize}
+
+\section{Conclusion}
+This project demonstrates that a compact ResNet18 architecture can achieve respectable FER performance on FER2013 while supporting real-time deployment on consumer hardware. The model handles expressive emotions well but struggles with subtle or low-resolution categories. Improvements could include more robust face detectors, larger and cleaner datasets, attention mechanisms, or transformer-based architectures. Temporal modeling using video sequences could further enhance performance in realistic applications.
+
+\textbf{Suggested Figures:}
+\begin{itemize}
+    \item Final system overview diagram summarizing the training and deployment pipeline.
+\end{itemize}
+
