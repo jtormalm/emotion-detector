@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.2)  6 DEC 2025 16:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.2)  6 DEC 2025 22:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -415,37 +415,134 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 45
  (/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) (./sec/0_abstract.tex) (./sec/1_intro.tex
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 11.
- (/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+<images/fer2013-hard.png, id=76, 167.62625pt x 294.09875pt>
+File: images/fer2013-hard.png Graphic file (type png)
+<use images/fer2013-hard.png>
+Package pdftex.def Info: images/fer2013-hard.png  used on input line 9.
+(pdftex.def)             Requested size: 248.42812pt x 435.86514pt.
+
+Overfull \hbox (11.29218pt too wide) in paragraph at lines 9--10
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Text page 1 contains only floats.
+
+[1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./images/fer2013-hard.png>]
+
+Package natbib Warning: Citation `Wang2017ResidualAttention' on page 2 undefined on input line 17.
+
+
+Package natbib Warning: Citation `Jaderberg2015SpatialTransformer' on page 2 undefined on input line 17.
+
+
+Package natbib Warning: Citation `Dosovitskiy2021ViT' on page 2 undefined on input line 19.
+
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 32.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [1{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+)
+<images/class-distribution.jpg, id=89, 715.11165pt x 426.393pt>
+File: images/class-distribution.jpg Graphic file (type jpg)
+<use images/class-distribution.jpg>
+Package pdftex.def Info: images/class-distribution.jpg  used on input line 41.
+(pdftex.def)             Requested size: 248.42812pt x 148.12721pt.
+
+Overfull \hbox (11.29218pt too wide) in paragraph at lines 41--42
+ [][] 
+ []
 
 
-] [2]) [3
+Package natbib Warning: Citation `He2015' on page 2 undefined on input line 51.
 
-] (./main.aux)
+<images/resnet-18.jpg, id=90, 2060.69875pt x 556.0775pt>
+File: images/resnet-18.jpg Graphic file (type jpg)
+<use images/resnet-18.jpg>
+Package pdftex.def Info: images/resnet-18.jpg  used on input line 55.
+(pdftex.def)             Requested size: 397.48651pt x 107.25949pt.
 
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+Package natbib Warning: Citation `Ramzan2020' on page 2 undefined on input line 56.
 
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 20E840795E3717D8A9AB9341B8868E79;1727
-(rerunfilecheck)             After:  E752B334E7ACF5C28FEB0DF0B2E2E2ED;1717.
+
+Package natbib Warning: Citation `Ramzan2020' on page 2 undefined on input line 56.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <./images/class-distribution.jpg>]
+<images/live.png, id=99, 784.9325pt x 732.7375pt>
+File: images/live.png Graphic file (type png)
+<use images/live.png>
+Package pdftex.def Info: images/live.png  used on input line 91.
+(pdftex.def)             Requested size: 198.73946pt x 185.52068pt.
+ [3 <./images/resnet-18.jpg> <./images/live.png>]
+
+Package natbib Warning: Citation `Yun2019CutMix' on page 4 undefined on input line 104.
+
+
+Package natbib Warning: Citation `Zhang2018Mixup' on page 4 undefined on input line 104.
+
+
+Package natbib Warning: Citation `Han2016DeepCompression' on page 4 undefined on input line 107.
+
+
+Package natbib Warning: Citation `Jacob2018Quantization' on page 4 undefined on input line 107.
+
+<images/confusion-matrix.png, id=114, 462.528pt x 346.896pt>
+File: images/confusion-matrix.png Graphic file (type png)
+<use images/confusion-matrix.png>
+Package pdftex.def Info: images/confusion-matrix.png  used on input line 122.
+(pdftex.def)             Requested size: 268.29903pt x 201.23157pt.
+
+Overfull \hbox (31.16309pt too wide) in paragraph at lines 122--123
+ [][] 
+ []
+
+
+Overfull \hbox (19.44229pt too wide) in paragraph at lines 131--148
+ [][] 
+ []
+
+[4 <./images/confusion-matrix.png>]
+<images/gradcam.png, id=122, 449.68pt x 566.115pt>
+File: images/gradcam.png Graphic file (type png)
+<use images/gradcam.png>
+Package pdftex.def Info: images/gradcam.png  used on input line 177.
+(pdftex.def)             Requested size: 248.42812pt x 312.75496pt.
+
+Overfull \hbox (11.29218pt too wide) in paragraph at lines 177--178
+ [][] 
+ []
+
+) (./main.bbl)
+
+Package natbib Warning: There were undefined citations.
+
+[5
+
+ <./images/gradcam.png>] (./main.aux)
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 4E148FCE4B8FB6F7299869E4C14E8EAF;2782.
  ) 
 Here is how much of TeX's memory you used:
- 14624 strings out of 478268
- 243005 string characters out of 5846348
- 576527 words of memory out of 5000000
- 32615 multiletter control sequences out of 15000+600000
- 489839 words of font info for 75 fonts, out of 8000000 for 9000
+ 14718 strings out of 478268
+ 244865 string characters out of 5846348
+ 572527 words of memory out of 5000000
+ 32682 multiletter control sequences out of 15000+600000
+ 493050 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,9n,91p,943b,442s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 87i,9n,91p,1010b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (3 pages, 112099 bytes).
+Output written on main.pdf (5 pages, 1645784 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 178 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 175 words of extra memory for PDF output out of 10000 (max. 10000000)
 
